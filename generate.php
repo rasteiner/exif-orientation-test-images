@@ -36,42 +36,25 @@ function generateOrientation(GdImage $base, int $orientation) {
     imagestring($copy, 5, 20, 43, $orientation, $textColor);
 
 
+    if($orientation >= 5) {
+        $copy = imagerotate($copy, 270, 0);
+    }
+
     switch($orientation) {
-        case 1:
+        case 1: case 8:
             // do nothing
             break;
-        case 2:
-            // flip
+        case 2: case 5:
             imageflip($copy, IMG_FLIP_HORIZONTAL);
             break;
-        case 3:
-            // rotate 180 degrees
-            $copy = imagerotate($copy, 180, 0);
+        case 3: case 6:
+            imageflip($copy, IMG_FLIP_BOTH);
             break;
-        case 4:
-            // rotate 180 degrees, flip
-            imageflip($copy, IMG_FLIP_HORIZONTAL);
-            $copy = imagerotate($copy, 180, 0);
-            break;
-        case 5:
-            // flip, then rotate 90 degrees counter-clockwise
-            imageflip($copy, IMG_FLIP_HORIZONTAL);
-            $copy = imagerotate($copy, 90, 0);
-            break;
-        case 6:
-            // rotate 90 degrees counter-clockwise
-            $copy = imagerotate($copy, 90, 0);
-            break;
-        case 7:
-            // flip, then rotate 90 degrees clockwise
-            imageflip($copy, IMG_FLIP_HORIZONTAL);
-            $copy = imagerotate($copy, 270, 0);
-            break;
-        case 8:
-            // rotate 90 degrees clockwise
-            $copy = imagerotate($copy, 270, 0);
+        case 4: case 7:
+            imageflip($copy, IMG_FLIP_VERTICAL);
             break;
     }
+
 
     $jpeg = new PelJpeg($copy);
     $exif = new PelExif();
