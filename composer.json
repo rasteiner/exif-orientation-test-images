@@ -1,5 +1,10 @@
 {
     "name": "roman/exif",
+    "autoload": {
+        "psr-4": {
+            "rasteiner\\exiftest\\": "src/"
+        }
+    },
     "authors": [
         {
             "name": "Roman Steiner",
