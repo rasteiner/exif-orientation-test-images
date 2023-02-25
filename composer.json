@@ -1,0 +1,12 @@
+{
+    "name": "roman/exif",
+    "authors": [
+        {
+            "name": "Roman Steiner",
+            "email": "roman@toastlab.ch"
+        }
+    ],
+    "require": {
+        "lsolesen/pel": "^0.9.12"
+    }
+}
